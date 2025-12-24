@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль беті</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+
+            /* АШЫҚ КӨКШІЛ ФОН */
+            background:
+                linear-gradient(
+                    rgba(224, 242, 255, 0.95),
+                    rgba(204, 232, 255, 0.95)
+                ),
+                url('4.jpg') no-repeat center center;
+
+            background-size: cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.96);
+            border-radius: 18px;
+            box-shadow: 0 12px 25px rgba(0, 123, 255, 0.2);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #1f3c88;
+            font-size: 1.9em;
+        }
+
+        .nav-button {
+            background-color: #4da3ff;
+            color: white;
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #2b8cff;
+            transform: translateY(-2px);
+        }
+
+        .continue-button {
+            background-color: #8bbcff;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-size: 1.05em;
+            text-decoration: none;
+            align-self: flex-end;
+            transition: 0.3s;
+        }
+
+        .continue-button:hover {
+            background-color: #6aa9ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Сәлем, досым!</h1>
+        </div>
+
+        <a href="my_course" class="nav-button">Менің курсым</a>
+        <a href="settings" class="nav-button">Баптаулар</a>
+        <a href="test_tasks" class="nav-button">Тест тапсырмалары</a>
+
+        <a href="/" class="continue-button">Артқа</a>
+    </div>
+
+</body>
+</html>

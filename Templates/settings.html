@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f2f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .left-panel {
+            flex: 1;
+            min-width: 250px;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #c7e0f2;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            width: 100%;
+        }
+        .header h1 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+        #profile-pic {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #a0d9e7;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #ccc;
+            margin-top: 20px;
+            object-fit: cover;
+        }
+        .right-panel {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .action-button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+            max-width: 250px;
+        }
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+        .logout-button {
+            background-color: #dc3545;
+            margin-top: 50px;
+            align-self: flex-end;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            cursor: pointer;
+            max-width: 250px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left-panel">
+        <div class="header">
+            <h1 data-i18n="profile" id="profile-title">Профиль</h1>
+        </div>
+        <img id="profile-pic" src="" alt="Профиль суреті">
+    </div>
+    <div class="right-panel">
+        <button class="action-button" data-i18n="uploadPhoto" id="change-photo-btn">Фото жүктеу</button>
+        <input type="file" id="file-input" accept="image/*">
+        <select id="language-select">
+            <option value="kk">Қазақша</option>
+            <option value="ru">Русский</option>
+        </select>
+        <a href="/user_profile" class="action-button logout-button" data-i18n="back" id="logout-btn">Артқа</a>
+    </div>
+</div>
+
+<script>
+    const changePhotoBtn = document.getElementById('change-photo-btn');
+    const fileInput = document.getElementById('file-input');
+    const profilePic = document.getElementById('profile-pic');
+
+    changePhotoBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', e => {
+        const file = e.target.files[0];
+        if(file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                profilePic.src = event.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    const translations = {
+        kk: { profile: 'Профиль', uploadPhoto: 'Фото жүктеу', back: 'Артқа' },
+        ru: { profile: 'Профиль', uploadPhoto: 'Загрузить фото', back: 'Назад' }
+    };
+
+    const languageSelect = document.getElementById('language-select');
+    function updateLanguage(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            el.textContent = translations[lang][key];
+        });
+    }
+
+    languageSelect.addEventListener('change', e => {
+        const lang = e.target.value;
+        localStorage.setItem('siteLanguage', lang);
+        updateLanguage(lang);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const lang = localStorage.getItem('siteLanguage') || 'kk';
+        languageSelect.value = lang;
+        updateLanguage(lang);
+    });
+</script>
+</body>
+</html>

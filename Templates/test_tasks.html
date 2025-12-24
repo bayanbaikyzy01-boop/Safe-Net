@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ececec;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 22px;
+            margin: 25px 0;
+        }
+
+        .answers button {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f7f7f7;
+            text-align: left;
+            cursor: pointer;
+            font-size: 17px;
+            transition: 0.2s;
+        }
+
+        .answers button:hover {
+            background: #e6e6e6;
+        }
+
+        .correct { background: #c8f7c5 !important; border-color: #27ae60; }
+        .wrong   { background: #f7c5c5 !important; border-color: #e74c3c; }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .nav button {
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 17px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .next { background: #0066ff; }
+        .prev { background: #777; }
+        .end  { background: #28a745; }
+
+        #resultBox {
+            text-align: center;
+            display: none;
+        }
+
+        #resultBox h2 { font-size: 30px; }
+        #resultBox p { font-size: 20px; }
+
+        .restart {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .pdf-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .next-page-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="quizBox">
+    <h2>Цифрлық қауіпсіздік тесті</h2>
+    <div class="info">
+        <div>Сұрақ: <span id="qnum">1</span>/10</div>
+        <div>Ұпай: <span id="score">0</span></div>
+        <div>Уақыт: <span id="timer">10:00</span></div>
+    </div>
+    <div class="question" id="questionText"></div>
+    <div class="answers" id="answers"></div>
+    <div class="nav">
+        <button class="prev" onclick="window.location.href='/user_profile'">Алдыңғы бетке өту</button>
+        <button class="prev" onclick="prevQuestion()">Алдыңғы</button>
+        <button class="next" onclick="nextQuestion()">Келесі</button>
+        <button class="end" onclick="finishTest()">Аяқтау</button>
+    </div>
+</div>
+
+<div class="container" id="resultBox">
+    <h2>Нәтиже</h2>
+    <p id="resultText"></p>
+    <button class="restart" onclick="restartTest()">Қайта бастау</button>
+    <button class="pdf-btn" onclick="downloadPDF()">PDF жүктеу</button>
+    <button class="next-page-btn" onclick="goNextPage()">Келесі бетке өту</button>
+</div>
+
+<script>
+let questions = [
+    { q: "Құпия сөзді қалай жасау керек?", a: ["Ұзын және күрделі", "Туған күнмен", "Барлық жерде бірдей"], correct: 0 },
+    { q: "Фишинг деген не?", a: ["Жалған сайтпен алдау", "Антивирус түрі", "Компьютердің бұзылуы"], correct: 0 },
+    { q: "Вирус деген не?", a: ["Зиянды бағдарлама", "Желі жылдамдығы", "Файл пішімі"], correct: 0 },
+    { q: "Қоғамдық Wi-Fi-да не істемеу керек?", a: ["Банкингке кіру", "Жай сайт ашу", "Музыка тыңдау"], correct: 0 },
+    { q: "Екі факторлы аутентификация не үшін керек?", a: ["Қосымша қорғау", "Жылдам кіру", "Құпия сөзді сақтау"], correct: 0 },
+    { q: "Бөгде адамнан файл келсе не істеу керек?", a: ["Ашпау", "Тез жүктеу", "Достарға жіберу"], correct: 0 },
+    { q: "Антивирустың міндеті қандай?", a: ["Зиянды бағдарламаларды табу", "Интернетті жылдамдату", "Сайттарды ашу"], correct: 0 },
+    { q: "Құпия сөзді қайда сақтау дұрыс?", a: ["Пароль менеджерінде", "Телефон жазбасында", "Қағазға жазып қою"], correct: 0 },
+    { q: "Жалған e-mail қалай танылады?", a: ["Қате мәтін, күмәнді сілтеме", "Ұзын хат", "Дұрыс жіберуші"], correct: 0 },
+    { q: "Жаңартулар не үшін қажет?", a: ["Қауіпсіздік үшін", "Түстер өзгерту үшін", "Компьютерді баяулату"], correct: 0 }
+];
+
+questions = questions.sort(() => Math.random() - 0.5);
+
+let index = 0;
+let score = 0;
+let selected = Array(10).fill(null);
+
+let timeLeft = 600;
+let timerInterval = setInterval(() => {
+    timeLeft--;
+    let m = String(Math.floor(timeLeft / 60));
+    let s = String(timeLeft % 60).padStart(2, '0');
+    document.getElementById("timer").innerText = m + ":" + s;
+    if (timeLeft <= 0) finishTest();
+}, 1000);
+
+function loadQuestion() {
+    document.getElementById("qnum").innerText = index + 1;
+    document.getElementById("questionText").innerText = questions[index].q;
+    let html = "";
+    questions[index].a.forEach((ans, i) => {
+        let className = "";
+        if (selected[index] !== null) {
+            if (i === questions[index].correct) className = "correct";
+            else if (i === selected[index]) className = "wrong";
+        }
+        html += '<button class="' + className + '" onclick="checkAnswer(' + i + ')">' + ans + '</button>';
+    });
+    document.getElementById("answers").innerHTML = html;
+}
+
+function checkAnswer(i) {
+    if (selected[index] !== null) return;
+    selected[index] = i;
+    if (i === questions[index].correct) score++;
+    document.getElementById("score").innerText = score;
+    loadQuestion();
+}
+
+function nextQuestion() { if (index < 9) { index++; loadQuestion(); } }
+function prevQuestion() { if (index > 0) { index--; loadQuestion(); } }
+
+function finishTest() {
+    clearInterval(timerInterval);
+    let percent = Math.round((score / 10) * 100);
+    document.getElementById("quizBox").style.display = "none";
+    document.getElementById("resultBox").style.display = "block";
+    document.getElementById("resultText").innerHTML = 'Дұрыс жауап: <b>' + score + '</b> / 10<br>Нәтиже: <b>' + percent + '%</b>';
+}
+
+function restartTest() {
+    location.reload();
+}
+
+function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    let doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("Цифрлық қауіпсіздік тестінің нәтижесі", 10, 20);
+    doc.setFontSize(14);
+    doc.text("Дұрыс жауаптар: " + score + " / 10", 10, 40);
+    doc.save("test_natyjesi.pdf");
+}
+
+function goNextPage() {
+    window.location.href = "/achievements";
+}
+
+loadQuestion();
+</script>
+</body>
+</html>

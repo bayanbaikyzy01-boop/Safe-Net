@@ -1,0 +1,1015 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f2f7; /* Light blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container for all pages */
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 900px; /* Adjusted for wider layouts */
+    position: relative;
+    overflow: hidden; /* For globe background */
+    display: flex;
+    flex-direction: column; /* Default to column for flexibility */
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Header common style (for sections like "Менің курсым", "Тест тапсырмалары") */
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #c7e0f2;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: fit-content; /* Adjust width to content */
+    align-self: flex-start; /* Align to left by default */
+}
+
+.header img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.header h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.5em;
+}
+
+/* Header box for "Жетістіктер" (Achievements) */
+.header-box {
+    background-color: #c7e0f2;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: inline-block; /* To make it wrap its content */
+}
+
+.header-box h1 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.5em;
+}
+
+
+/* Globe background for my_course page */
+.globe-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    background: url('https://via.placeholder.com/600x600/a0d9e7/ffffff?text=Globe+Tech') no-repeat center center; /* Placeholder for globe image */
+    background-size: contain;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Content wrapper for my_course page */
+.content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Laptop element for my_course page */
+.laptop {
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    margin-top: 20px;
+    background: url('https://via.placeholder.com/500x300/e0e0e0/000000?text=Laptop+Screen') no-repeat center center;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding-top: 60%; /* Aspect ratio for laptop screen */
+}
+
+.laptop-screen {
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    width: 80%;
+    height: 70%;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Gaming illustration for test_tasks page */
+.gaming-illustration {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-top: 20px;
+    background: url('https://via.placeholder.com/600x400/bde0f0/333333?text=Gaming+Illustration') no-repeat center center; /* Placeholder for gaming illustration */
+    background-size: contain;
+    padding-bottom: 60%; /* Aspect ratio */
+    position: relative;
+}
+
+/* Trophy illustration for achievements page */
+.trophy-illustration {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-top: 20px;
+    background: url('https://via.placeholder.com/400x300/f0d7a0/8b4513?text=Trophy+Winner') no-repeat center center; /* Placeholder for trophy winner */
+    background-size: contain;
+    padding-bottom: 75%; /* Aspect ratio */
+    position: relative;
+}
+
+/* Avatar/Profile picture placeholder */
+.avatar-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #a0d9e7;
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+.profile-pic-placeholder {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #a0d9e7;
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #ccc;
+    margin-top: 20px;
+}
+
+/* Boy illustration for welcome page */
+.boy-illustration {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    background: url('https://via.placeholder.com/300x300/a0d9e7/2c3e50?text=Boy+with+Headphones') no-repeat center center; /* Placeholder for boy image */
+    background-size: contain;
+    padding-bottom: 100%; /* Aspect ratio for a square image */
+    margin: 0 auto;
+}
+
+/* Input Group Styles (common for forms) */
+.input-group {
+    margin-bottom: 20px;
+    width: 70%;
+    max-width: 400px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #a0d9e7;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+/* Specific input field for test_tasks */
+.input-field {
+    width: 70%;
+    max-width: 400px;
+    padding: 12px;
+    border: 1px solid #a0d9e7;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Generic Button Style */
+.button {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    margin-top: 30px;
+    display: inline-block; /* Ensure it behaves like a block for margin, but allows other elements */
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Green button specific styles (e.g., "Жалғастыру") */
+.button.green {
+    background-color: #28a745;
+}
+
+.button.green:hover {
+    background-color: #218838;
+}
+
+/* Navigation button for user_profile page */
+.nav-button {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.nav-button:hover {
+    background-color: #0056b3;
+}
+.nav-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    filter: invert(1); /* Makes placeholder icon white */
+}
+
+/* Action buttons for settings page */
+.action-button {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    max-width: 250px;
+}
+.action-button:hover {
+    background-color: #0056b3;
+}
+.logout-button {
+    background-color: #dc3545; /* Red button for logout */
+    margin-top: 50px;
+    align-self: flex-end; /* Align to bottom right if space allows */
+}
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+
+/* Layout for user_profile and settings (two columns) */
+.container.two-columns {
+    flex-direction: row; /* Enable two columns */
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.left-panel {
+    flex: 1;
+    min-width: 250px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-panel {
+    flex: 2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+/* Specific adjustments for continue button in user_profile */
+.continue-button {
+    background-color: #28a745; /* Green button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    align-self: flex-end; /* Position to bottom right */
+    margin-top: 30px;
+}
+.continue-button:hover {
+    background-color: #218838;
+}
+
+/* Styles for "Цифрлық саяхат" welcome page */
+.left-section {
+    flex: 1;
+    min-width: 300px;
+    margin-right: 30px;
+    text-align: left;
+}
+.right-section {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+.left-section h1 {
+    color: #ffc107; /* Yellow for the title */
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.left-section p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* General text styles */
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    .header h1, .header-box h1 {
+        font-size: 1.2em;
+    }
+    .input-group, .input-field {
+        width: 90%;
+        max-width: none;
+    }
+    .button, .action-button, .nav-button {
+        width: 100%;
+        max-width: none;
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+    .left-panel, .right-panel {
+        flex: 1 1 100%; /* Stack columns on small screens */
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .logout-button {
+        align-self: center; /* Center the logout button when stacked */
+        margin-top: 20px;
+    }
+    .left-section, .right-section {
+        flex: 1 1 100%;
+        margin-right: 0;
+        text-align: center;
+    }
+    .left-section h1 {
+        font-size: 2em;
+    }
+    .boy-illustration {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    .header, .header-box {
+        padding: 8px 15px;
+        margin-bottom: 20px;
+    }
+    .header img {
+        width: 25px;
+        height: 25px;
+        margin-right: 8px;
+    }
+    .header h1, .header-box h1 {
+        font-size: 1.1em;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 0.9em;
+    }
+    .button, .action-button, .nav-button {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .avatar-placeholder, .profile-pic-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+
+
+/* style.css - AcademiX цифрлық қаупсіздік тестінің стильдері */
+
+/* Негізгі стильдер */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(0, 60, 120, 0.12);
+    overflow: hidden;
+}
+
+/* Header стилі */
+.header {
+    background: linear-gradient(95deg, #1a5fb4 0%, #0d8ddb 100%);
+    color: white;
+    padding: 30px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.academix-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.academix-logo h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-left: 12px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #1a5fb4;
+    font-size: 22px;
+}
+
+.test-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.test-subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.header-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+}
+
+.header-pattern::before {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Статистика жолағы */
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 25px 40px;
+    background: #f8fafd;
+    border-bottom: 1px solid #eaeef5;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a5fb4;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* Прогресс жолағы */
+.progress-container {
+    padding: 0 40px 30px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1a5fb4 0%, #0d8ddb 100%);
+    width: 10%;
+    transition: width 0.5s ease;
+}
+
+/* Негізгі контент */
+.content-area {
+    padding: 40px;
+}
+
+.question-number {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.question-number i {
+    margin-right: 8px;
+    color: #1a5fb4;
+}
+
+.question-text {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #1e293b;
+    margin-bottom: 35px;
+}
+
+/* Жауап опциялары */
+.options-container {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.option {
+    padding: 18px 20px;
+    background: #f8fafd;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.option:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.option.selected {
+    background: #e1effe;
+    border-color: #1a5fb4;
+}
+
+.option.correct {
+    background: #d1fae5;
+    border-color: #10b981;
+}
+
+.option.incorrect {
+    background: #fee2e2;
+    border-color: #ef4444;
+}
+
+.option-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #e2e8f0;
+    color: #475569;
+    border-radius: 8px;
+    margin-right: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.option.selected .option-letter {
+    background: #1a5fb4;
+    color: white;
+}
+
+.option.correct .option-letter {
+    background: #10b981;
+    color: white;
+}
+
+.option.incorrect .option-letter {
+    background: #ef4444;
+    color: white;
+}
+
+.option-text {
+    font-size: 17px;
+    color: #334155;
+}
+
+/* Түсіндірме бөлімі */
+.explanation-box {
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    display: none;
+}
+
+.explanation-title {
+    font-weight: 600;
+    color: #1a5fb4;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.explanation-title i {
+    margin-right: 10px;
+}
+
+.explanation-text {
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* КНОПКАЛАР - МАҢЫЗДЫ БӨЛІМ! */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* Жалпы кнопка стилі */
+.btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Кнопкаларға бөлек стильдер */
+
+/* Алдыңғы кнопкасы */
+.btn-prev {
+    background: #f1f5f9;
+    color: #475569;
+    border: 2px solid #cbd5e1;
+}
+
+.btn-prev:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(148, 163, 184, 0.2);
+}
+
+.btn-prev:active {
+    transform: translateY(0);
+}
+
+.btn-prev:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Келесі кнопкасы */
+.btn-next {
+    background: linear-gradient(95deg, #1a5fb4 0%, #0d8ddb 100%);
+    color: white;
+    border: 2px solid #1a5fb4;
+}
+
+.btn-next:hover {
+    background: linear-gradient(95deg, #1557a5 0%, #0c7ec7 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(26, 95, 180, 0.3);
+}
+
+.btn-next:active {
+    transform: translateY(0);
+}
+
+.btn-next:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Жіберу кнопкасы */
+.btn-submit {
+    background: linear-gradient(95deg, #10b981 0%, #0da271 100%);
+    color: white;
+    border: 2px solid #10b981;
+    display: none;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(95deg, #0da271 0%, #0b8a62 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* Қайта бастау кнопкасы */
+.btn-restart {
+    background: linear-gradient(95deg, #1a5fb4 0%, #0d8ddb 100%);
+    color: white;
+    padding: 16px 40px;
+    font-size: 18px;
+    border: 2px solid #1a5fb4;
+}
+
+.btn-restart:hover {
+    background: linear-gradient(95deg, #1557a5 0%, #0c7ec7 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(26, 95, 180, 0.3);
+}
+
+.btn-restart:active {
+    transform: translateY(0);
+}
+
+/* Кнопкаларға анимация */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.btn-restart:hover {
+    animation: pulse 1.5s infinite;
+}
+
+/* Кнопка ішіндегі иконкалар */
+.btn i {
+    font-size: 18px;
+}
+
+/* Нәтиже экраны */
+.result-screen {
+    display: none;
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.result-icon {
+    font-size: 80px;
+    color: #1a5fb4;
+    margin-bottom: 25px;
+}
+
+.result-title {
+    font-size: 32px;
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+.result-score {
+    font-size: 72px;
+    font-weight: 700;
+    color: #1a5fb4;
+    margin: 25px 0;
+}
+
+.result-message {
+    font-size: 18px;
+    color: #64748b;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Мобильдік адаптация */
+@media (max-width: 768px) {
+    .container {
+        border-radius: 16px;
+    }
+
+    .header, .content-area, .stats-bar, .progress-container {
+        padding: 25px 20px;
+    }
+
+    .academix-logo h1 {
+        font-size: 26px;
+    }
+
+    .test-title {
+        font-size: 22px;
+    }
+
+    .question-text {
+        font-size: 19px;
+    }
+
+    .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    /* Мобильдік кнопкалар */
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: unset;
+        padding: 16px;
+    }
+
+    .result-score {
+        font-size: 56px;
+    }
+
+    .btn-restart {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Планшеттер үшін */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .navigation-buttons {
+        justify-content: space-around;
+    }
+
+    .btn {
+        min-width: 160px;
+    }
+}
+
+/* Кнопкаларға фокус стилі */
+.btn:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Loading эффекті кнопкалар үшін */
+.btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Кнопка түрлері үшін теру эффектісі */
+.btn-prev::before,
+.btn-next::before,
+.btn-submit::before,
+.btn-restart::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn-prev:focus:not(:active)::before,
+.btn-next:focus:not(:active)::before,
+.btn-submit:focus:not(:active)::before,
+.btn-restart:focus:not(:active)::before {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}

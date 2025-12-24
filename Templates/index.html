@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background: linear-gradient(135deg, #74ebd5, #9face6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        padding: 40px;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .left-section {
+        flex: 1;
+        min-width: 280px;
+    }
+
+    h1 {
+        font-size: 2.6em;
+        margin-bottom: 10px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    p {
+        color: #555;
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+
+    .input-group {
+        margin-bottom: 18px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        font-size: 1em;
+        outline: none;
+        transition: 0.3s;
+        background: #f9fbff;
+    }
+
+    .input-group input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+        background: #fff;
+    }
+
+    .right-section {
+        flex: 1;
+        min-width: 260px;
+        text-align: center;
+    }
+
+    .boy-illustration {
+        width: 100%;
+        max-width: 280px;
+        padding-bottom: 100%;
+        margin: 0 auto 25px;
+        background: url('/static/3.jpg') no-repeat center center;
+        background-size: cover;
+        border-radius: 50%;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .button {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 14px 40px;
+        border-radius: 30px;
+        font-size: 1.1em;
+        text-decoration: none;
+        display: inline-block;
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+        transition: 0.3s;
+    }
+
+    .button.active {
+        opacity: 1;
+        cursor: pointer;
+        pointer-events: auto;
+        box-shadow: 0 10px 20px rgba(102,126,234,0.4);
+    }
+
+    .button.active:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 25px rgba(102,126,234,0.5);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="left-section">
+        <h1>Цифрлық саяхат</h1>
+        <p>Білімді ойын түрінде бірге үйренейік!</p>
+
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Аты" required>
+        </div>
+
+        <div class="input-group">
+            <input type="number" id="age" placeholder="Жасы" required>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Құпиясөз" required>
+        </div>
+    </div>
+
+    <div class="right-section">
+        <div class="boy-illustration"></div>
+        <a href="/user_profile" id="startBtn" class="button">Бастау</a>
+    </div>
+</div>
+
+<script>
+    const nameInput = document.getElementById('name');
+    const ageInput = document.getElementById('age');
+    const passwordInput = document.getElementById('password');
+    const startBtn = document.getElementById('startBtn');
+
+    function checkInputs() {
+        if (
+            nameInput.value.trim() !== '' &&
+            ageInput.value.trim() !== '' &&
+            passwordInput.value.trim() !== ''
+        ) {
+            startBtn.classList.add('active');
+        } else {
+            startBtn.classList.remove('active');
+        }
+    }
+
+    nameInput.addEventListener('input', checkInputs);
+    ageInput.addEventListener('input', checkInputs);
+    passwordInput.addEventListener('input', checkInputs);
+</script>
+
+</body>
+</html>
